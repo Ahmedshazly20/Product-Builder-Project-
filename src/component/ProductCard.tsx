@@ -14,7 +14,7 @@ const ProductCard = ({Product}: IProps) => {
       <Image
         imageURL={imageURL}
         alt={"Product Name"}
-        className="rounded-md mb-2"
+        className="rounded-md h-52 w-full lg:object-cover"
       />
 
       <h3>{title}</h3>
