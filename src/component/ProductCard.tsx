@@ -2,13 +2,16 @@ import { IProduct } from "../interfaces";
 import Image from "./Image";
 import Button from "./ui/Button";
 import {txtclise} from "../utils/Function"
+import Colors from "./ui/colors";
 
 interface IProps {
   Product :IProduct;
 }
 
 const ProductCard = ({Product}: IProps) => {
-  const { title ,category,price,id,description ,imageURL }= Product
+  const { title ,category,price,id,description,colors ,imageURL }= Product;
+  
+  const rendercolorslist =colors.map(color=> <Colors  key={color}  singlecolor={color}/>)
   return (
     <div className="max-w-sm md:max-w-lg mx-auto md:mx-0 border rounded-md p-2 flex flex-col space-y-3">
       <Image
@@ -21,12 +24,8 @@ const ProductCard = ({Product}: IProps) => {
       <p>
        {txtclise(description) }
       </p>
-
-      <div className="flex items-center my-4 space-x-2">
-        <span className="w-5 h-5 bg-indigo-600 rounded-full cursor-pointer" />
-        <span className="w-5 h-5 bg-yellow-600 rounded-full cursor-pointer" />
-        <span className="w-5 h-5 bg-red-600 rounded-full cursor-pointer" />
-      </div>
+      <div className="flex items-center space-x-2 ">{rendercolorslist}</div>
+     
 
       <div className="flex items-center justify-between">
         <span>{price}</span>
