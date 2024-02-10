@@ -6,10 +6,27 @@ import Colors from "./ui/colors";
 
 interface IProps {
   Product :IProduct;
+  setProductToEdit:(Product:IProduct)=>void;
+  openedit:()=>void;
+  setProductToEditindex:(value:number)=>void;
+  index:number;
+   opendelet: () => void;
 }
 
-const ProductCard = ({Product}: IProps) => {
+const ProductCard = ({Product,setProductToEdit,openedit , index,setProductToEditindex,opendelet}: IProps) => {
   const { title ,category,price,id,description,colors ,imageURL }= Product;
+
+  const Toedit =  ()=>{
+    openedit();
+    setProductToEdit(Product);
+    setProductToEditindex(index)
+    
+  }
+  const onremove = () =>{
+    setProductToEdit(Product);
+    opendelet()
+    
+  }
   
   const rendercolorslist =colors.map(color=> <Colors  key={color}  singlecolor={color}/>)
   return (
@@ -30,15 +47,15 @@ const ProductCard = ({Product}: IProps) => {
       <div className="flex items-center justify-between">
         <span>{price}</span>
         <Image
-          imageURL={imageURL}
-          alt={"Product Name"}
+          imageURL={category.imageURL}
+          alt={category.name }
           className="w-10 h-10 rounded-full object-bottom"
         />
         
       </div>
       <div className="flex items-center justify-between space-x-2 mt-5">
-        <Button className="bg-indigo-700">EDIT</Button>
-        <Button className="bg-red-700">DELETE</Button>
+        <Button className="bg-indigo-700" onClick={Toedit}>EDIT</Button>
+        <Button className="bg-red-700" onClick={onremove}>DELETE</Button>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+
 interface Iprops {
     singlecolor: string;
     onClick? :()=>void;

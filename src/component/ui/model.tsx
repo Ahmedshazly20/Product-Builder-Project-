@@ -8,6 +8,7 @@ interface Iprops {
     closeModal: () => void;
     title?:string;
     children:ReactNode;
+    description?:string;
 
  }
 const  MyModal= ({title,closeModal,isOpen,children}:Iprops)=> {
@@ -20,6 +21,8 @@ const  MyModal= ({title,closeModal,isOpen,children}:Iprops)=> {
 
     <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <div className="fixed inset-0 backdrop-blur-sm">
+
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -55,7 +58,9 @@ const  MyModal= ({title,closeModal,isOpen,children}:Iprops)=> {
               </Transition.Child>
             </div>
           </div>
+          </div>
         </Dialog>
+
       </Transition>
     </>
   )

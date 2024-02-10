@@ -1,11 +1,12 @@
 //  Validates a product object for required fields and constraints.
 
-export const productValidation =(product:{title: string; description: string; imageURL: string; price: string })=>{
-    const errors: { title: string; description: string; imageURL: string; price: string } = {
+export const productValidation =(product:{title: string; description: string; imageURL: string; price: string;  })=>{
+    const errors: { title: string; description: string; imageURL: string; price: string ;} = {
         title: "",
         description: "",
         imageURL: "",
         price: "",
+        
       };
       const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(product.imageURL);
 
@@ -23,6 +24,7 @@ export const productValidation =(product:{title: string; description: string; im
       if (!product.price.trim() || isNaN(Number(product.price))) {
         errors.price = "Valid price is required!";
       }
+    
       return errors;
 
 } 
